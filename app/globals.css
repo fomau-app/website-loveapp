@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+/* Palette reprise de l'app : tons chauds du soir (sombre) / papier chaud (clair). */
+:root {
+  --bg: #16120f;
+  --bg2: #1d1814;
+  --card: #241e1a;
+  --card2: #2f2823;
+  --line: rgba(246, 236, 226, 0.1);
+  --text: #f5ece3;
+  --muted: #b5a698;
+  --dim: #7d7066;
+  --accent: #e8896b;
+  --accent-ink: #1b1511;
+  --rose: #eab2ab;
+  --peach: #f0cda6;
+  --butter: #ecd98f;
+  --sage: #b9d2a6;
+  --sky: #a9c9e0;
+  --lilac: #cbbbe2;
+  --glow: rgba(232, 137, 107, 0.22);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #faf3ea;
+    --bg2: #f3e8dc;
+    --card: #fffaf4;
+    --card2: #f0e5d9;
+    --line: rgba(75, 58, 50, 0.13);
+    --text: #4b3a32;
+    --muted: #7d6a5f;
+    --dim: #a08f83;
+    --accent: #c9593f;
+    --accent-ink: #fffaf4;
+    --rose: #d98d84;
+    --peach: #d9a56d;
+    --butter: #b8922a;
+    --sage: #6f9a5a;
+    --sky: #5b8fb8;
+    --lilac: #8d76b3;
+    --glow: rgba(217, 105, 79, 0.16);
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg2: var(--bg2);
+  --color-card: var(--card);
+  --color-card2: var(--card2);
+  --color-line: var(--line);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-dim: var(--dim);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --font-serif: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.prose-legal p,
+.prose-legal li {
+  max-width: 68ch;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
